@@ -1,0 +1,5 @@
+beautifulsoup4
+scrapy
+requests
+pytube
+console-menu
