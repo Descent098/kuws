@@ -13,3 +13,13 @@ There is inline documentation and ~~readthedocs~~ official documentation (commin
 There is some readthedocs documentation with examples available at:
 
 __*comming soon*__
+
+# Source File & Folder Layout
+
+- Classes
+- Scripts
+  - All 
+- .whitesource
+  - Configuration for automated CVE scanning utility
+- main.py
+- setup.py
