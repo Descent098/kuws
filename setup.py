@@ -27,7 +27,7 @@ setuptools.setup(
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Descent098/kuws",
-    packages=setuptools.find_packages(),
+    packages=["kuws"],
     install_requires=[
     "requests",
     "pytube"
