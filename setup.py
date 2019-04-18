@@ -20,7 +20,7 @@ long_description = read("README.md", "CHANGELOG.md")
 
 setuptools.setup(
     name="kuws",
-    version="0.0.1",
+    version="0.0.2",
     author="Kieran Wood",
     author_email="kieranw098@gmail.com",
     description="A set of python scripts for common web tasks",
