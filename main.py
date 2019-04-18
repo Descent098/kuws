@@ -18,10 +18,10 @@ if __name__ == "__main__":
     youtube_parser = subparsers.add_parser('youtube', argument_default='-m',
         help='Allows you to interact with youtube videos')
     youtube_parser.add_argument('-d', "--download", 
-        help='usage: python main.py youtube -d <url>; Lets you download a specified youtube video', nargs='+', dest="download_url")
+        help='usage: python main.py youtube -d <url>; Lets you download a specified youtube video', nargs='?', dest="download_url")
 
     youtube_parser.add_argument('-p', "--path", default=".",
-        help='usage: python main.py youtube -d <url> -p /downloads; Lets you set a path to download', nargs='+', dest="download_path")
+        help='usage: python main.py youtube -d <url> -p /downloads; Lets you set a path to download', nargs='?', dest="download_path")
     
 
 
@@ -32,25 +32,30 @@ if __name__ == "__main__":
         help='Allows you to trace redirects and get other information')
 
     redirects_parser.add_argument('-u', "--url", 
-        help='usage: python main.py redirects -u <url>; Lets you see the trace for a url', nargs='+', dest="trace_url")
+        help='usage: python main.py redirects -u <url>; Lets you see the trace for a url', nargs='?', dest="trace_url")
         
     # Obligatory argument parsing, setting arguments to args for later use
 
-    selected_parser = main_parser.parse_args(command_line)
-
 
     args = main_parser.parse_args()
-    
-    if args.trace_url:
-        trace(args.trace_url, print_response=True)
 
     try:
-        if args.download_url:
-            if not args.download_path: # If no -p was specified
-                print("video will be downloaded to script source folder: {}".format(os.getcwd()))
-                download(args.download_url[0], '.')
-            if args.download_path:# If -p was specified
-                print("video will be downloaded to specified directory: {}".format(args.download_path[0]))
-                download(args.download_url[0], args.download_path[0])
-    except:
-        print("Expected download path")
+        if args.trace_url:
+            trace(args.trace_url, print_response=True)
+    except AttributeError: #For some ungodly reason argparse throws a hissy fit for daring to check namespace variables
+        pass
+    except Exception as identifier:
+        print("Exception in URL trace with error: {}".format(identifier))
+
+    #TODO: Write youtube parsing download parsing properly
+    # try:
+    #     if (args.download_url and not args.download_path): # If no -p was specified
+    #         print("video will be downloaded to script source folder: {}".format(os.getcwd()))
+    #         download(args.download_url[0], '.')
+    #     else:
+    #         print("video will be downloaded to specified directory: {}".format(args.download_path[0]))
+    #         download(args.download_url[0], args.download_path[0])
+    # except AttributeError: #For some ungodly reason argparse throws a hissy fit for daring to check namespace variables
+    #     pass
+    # except Exception as identifier:
+    #     print("exception in download path with error: {}".format(identifier))
