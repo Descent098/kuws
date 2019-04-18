@@ -1,6 +1,6 @@
 import argparse
 from scripts.youtube_utilities import download
-from classes.menus import main_menu, youtube_menu
+from scripts.redirects import trace
 
 import os
 
@@ -23,37 +23,27 @@ if __name__ == "__main__":
     youtube_parser.add_argument('-p', "--path", default=".",
         help='usage: python main.py youtube -d <url> -p /downloads; Lets you set a path to download', nargs='+', dest="download_path")
     
-    youtube_parser.add_argument('-m', "--menu", action="store_true",
-        dest="youtube_menu", help='Opens the youtube submenu directly')
 
 
     """Code below handles 'redirects' command in the main script
     i.e. >python main.py youtube
     """
-    redirects_parser = subparsers.add_parser('redirects', argument_default='-m',
+    redirects_parser = subparsers.add_parser('redirects', argument_default='-u',
         help='Allows you to trace redirects and get other information')
-    redirects_parser.add_argument('-m', "--menu", action='store_true', 
-        dest="redirect_menu", help="Opens the redirects submenu directly")
+
+    redirects_parser.add_argument('-u', "--url", 
+        help='usage: python main.py redirects -u <url>; Lets you see the trace for a url', nargs='+', dest="trace_url")
         
     # Obligatory argument parsing, setting arguments to args for later use
+
+    selected_parser = main_parser.parse_args(command_line)
+
+
     args = main_parser.parse_args()
-
-    #Redirect Menu
-    try:
-        if args.redirect_menu:
-            redirect_menu()
-    except:
-        print("Excepted redirects menu")
-
-    # Youtube menu
-    try:
-        if args.youtube_menu:
-            youtube_menu()
-    except:
-        print("Excepted youtube menu")
-        pass
     
-    
+    if args.trace_url:
+        trace(args.trace_url, print_response=True)
+
     try:
         if args.download_url:
             if not args.download_path: # If no -p was specified
@@ -63,4 +53,4 @@ if __name__ == "__main__":
                 print("video will be downloaded to specified directory: {}".format(args.download_path[0]))
                 download(args.download_url[0], args.download_path[0])
     except:
-        print("Excepted download path")
+        print("Expected download path")

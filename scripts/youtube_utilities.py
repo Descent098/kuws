@@ -1,10 +1,6 @@
 from pytube import YouTube
 import tkinter as tk
 from tkinter import filedialog
-from consolemenu import *
-from consolemenu.items import *
-from consolemenu.format import *
-from consolemenu.menu_component import Dimension
 
 def link_and_path():
     """Prompts user for the link to a youtube video, and path of where to download the video to"""
