@@ -1,2 +1,2 @@
-from scripts.redirects import *
-from scripts.youtube_utilities import *
+from .redirects import *
+from .youtube_utilities import *
