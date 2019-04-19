@@ -1,6 +1,12 @@
 # Changelog
 ---
 
+# April 20th 2019
+Merged V0.0.3 to Master
+Included:
+    - Better Packaging; Fixed Pip install pathing issues
+
+
 # April 18th 2019
 Merged V0.0.2 to Master
 Included:
