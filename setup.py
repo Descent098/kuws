@@ -20,14 +20,17 @@ long_description = read("README.md", "CHANGELOG.md")
 
 setuptools.setup(
     name="kuws",
-    version="0.0.3",
+    version="0.0.4",
     author="Kieran Wood",
     author_email="kieranw098@gmail.com",
     description="A set of python scripts for common web tasks",
     long_description=long_description,
     long_description_content_type="text/markdown",
     url="https://github.com/Descent098/kuws",
-    packages=["kuws"],
+    packages=setuptools.find_packages(),
+    entry_points={
+          'console_scripts': ['kuws = kuws.command_line_utility:main']
+      },
     install_requires=[
     "requests",
     "pytube"

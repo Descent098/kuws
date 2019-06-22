@@ -1,6 +1,9 @@
 # Changelog
 ---
 
+# June 21st
+Added command line entrypoint to allow for direct calling
+
 # April 20th 2019
 Merged V0.0.3 to Master
 Included:

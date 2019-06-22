@@ -1,10 +1,10 @@
 import argparse
-from scripts.youtube_utilities import download
-from scripts.redirects import trace
+from .youtube_utilities import download
+from .redirects import trace
 
 import os
 
-if __name__ == "__main__":
+def main():
     # Setting up Main Argument Parser
     main_parser = argparse.ArgumentParser(description="A set of python web utility scripts")
     main_parser.add_argument("-v",'--version', action='version', version='kuws V0.0.1')
