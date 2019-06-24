@@ -1,8 +1,12 @@
 # Changelog
 ---
 
-# June 21st
-Added command line entrypoint to allow for direct calling
+# June 23rd
+Merged v0.0.4 to master
+    - Added SSL argument to main parser
+    - refactored and updated inline documentation
+    - Added command line entrypoint to allow for direct calling
+    - Removed Youtube command for time being while pytube sorts out issues
 
 # April 20th 2019
 Merged V0.0.3 to Master
