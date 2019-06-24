@@ -1,9 +1,13 @@
+"""
+Description:
+    Contains all the configuration for the package on\
+        pypi/pip
+"""
 import setuptools
 
-# Code originally from https://github.com/aegirhall/console-menu/blob/develop/setup.py
-
-import io
 def read(*filenames, **kwargs):
+    import io
+    # Code originally from https://github.com/aegirhall/console-menu/blob/develop/setup.py
     encoding = kwargs.get('encoding', 'utf-8')
     sep = kwargs.get('sep', '\n')
     buf = []
@@ -12,11 +16,8 @@ def read(*filenames, **kwargs):
             buf.append(f.read())
     return sep.join(buf)
 
-
-
+# Appending the changelog to the readme for a complete package description
 long_description = read("README.md", "CHANGELOG.md")
-
-
 
 setuptools.setup(
     name="kuws",
@@ -32,8 +33,7 @@ setuptools.setup(
           'console_scripts': ['kuws = kuws.command_line_utility:main']
       },
     install_requires=[
-    "requests",
-    "pytube"
+    "requests"
       ],
     classifiers=[
         "Programming Language :: Python :: 3",
