@@ -1,27 +1,48 @@
-"""
-Description:
-    Contains all the configuration for the package on\
-        pypi/pip
+"""Contains all the configuration for the package on pypi/pip.
+
+Functions
+---------
+concat_description : str
+    Reads and yields the content of the filenames.
+
+Module Variables
+----------------
+long_description : str
+    The content in README.md and CHANGELOG.md and used for module description.
+
+Notes
+-----
+Primary entrypoint is in kuws.command_line_utility.
+
 """
 import setuptools
 
-def read(*filenames, **kwargs):
-    import io
-    # Code originally from https://github.com/aegirhall/console-menu/blob/develop/setup.py
-    encoding = kwargs.get('encoding', 'utf-8')
-    sep = kwargs.get('sep', '\n')
-    buf = []
-    for filename in filenames:
-        with io.open(filename, encoding=encoding) as f:
-            buf.append(f.read())
-    return sep.join(buf)
+def concat_description(*filenames):
+    """Reads and yields the content of the filenames.
+
+    Arguments
+    ---------
+    *filenames
+        An arbitrary number of filenames to parse
+
+    Yields
+    ------
+    str:
+        The current files content (from file.read() function)
+
+    """
+    for current_file in filenames:
+        with open(current_file, 'r') as f:
+            yield f.read()
 
 # Appending the changelog to the readme for a complete package description
-long_description = read("README.md", "CHANGELOG.md")
+long_description = ""
+for content in concat_description("README.md", "CHANGELOG.md"):
+    long_description += content
 
 setuptools.setup(
     name="kuws",
-    version="0.0.4",
+    version="0.0.5",
     author="Kieran Wood",
     author_email="kieranw098@gmail.com",
     description="A set of python scripts for common web tasks",
@@ -33,7 +54,10 @@ setuptools.setup(
           'console_scripts': ['kuws = kuws.command_line_utility:main']
       },
     install_requires=[
-    "requests"
+    "requests",
+    "pytube",
+    "pyopenssl",
+    "docopt",
       ],
     classifiers=[
         "Programming Language :: Python :: 3",
