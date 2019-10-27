@@ -42,7 +42,7 @@ for content in concat_description("README.md", "CHANGELOG.md"):
 
 setuptools.setup(
     name="kuws",
-    version="0.0.5",
+    version="0.0.6",
     author="Kieran Wood",
     author_email="kieranw098@gmail.com",
     description="A set of python scripts for common web tasks",

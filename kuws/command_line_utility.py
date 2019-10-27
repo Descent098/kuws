@@ -27,6 +27,7 @@ from docopt import docopt
 from .utilities.youtube import download
 from .utilities.redirects import trace
 from .utilities.ssl import check_ssl_expiry
+from .utilities.domains import register_key
 
 usage = """Kieran's Useful Web Scripts; A set of python web utility scripts.
 
@@ -35,18 +36,21 @@ Usage:
     kuws (-h | --help)
     kuws ssl <url> [-e]
     kuws redirects <url> [-t]
+    kuws domains [-k=<whoiskey>]
+    kuws domains <domain> [-e] [-k=<whoiskey>]
 
 Options:
-    -h --help       Show this help message and exit
-    -v --version    Show program's version number and exit
-    -e --expiry     If specified will check the expiry
-    -t --trace      If specified will show the full trace of the provided url
+    -h --help               Show this help message and exit
+    -v --version            Show program's version number and exit
+    -e --expiry             If specified will check the expiry of ssl cert/domain
+    -t --trace              If specified will show the full trace of the provided url
+    -k --key=<whoiskey>     If specified will register the whois domain key SEE: https://jsonwhois.io/
 
 """
 
 def main():
     """Primary entrypoint for the kuws script."""
-    args = docopt(usage, version="kuws V0.0.4") # Grab arguments for parsing
+    args = docopt(usage, version="kuws V0.0.6") # Grab arguments for parsing
 
     if args["ssl"]: # Begin parsing for ssl subcommand
         if args["--expiry"]: # If -e or --expiry is specified
@@ -56,3 +60,8 @@ def main():
         if args["--trace"]: # If -t or --trace is specified
             trace(args["<url>"], print_result=True)
 
+    if args["domain"]: # Begin parsing for ssl subcommand
+        if args["--expiry"]: # If -e or --expiry is specified
+            pass
+        if args["--key"]:
+            register_key(args["--key"])
