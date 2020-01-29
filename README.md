@@ -1,4 +1,4 @@
-![kuws logo](https://raw.githubusercontent.com/Descent098/kuws/master/kuws-logo.png)
+![kuws logo](https://raw.githubusercontent.com/Descent098/kuws/master/docs/img/kuws-logo.png)
 
 
 
