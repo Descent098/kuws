@@ -1,3 +1,5 @@
+"""WIP module, will eventually enable whois style lookups of domains"""
+
 import os
 import json
 import requests

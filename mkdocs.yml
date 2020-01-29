@@ -1,0 +1,14 @@
+site_name: kuws; Kieran's useful web scripts
+
+nav:
+    - Home: index.md
+    - Quick Start: quick-start.md
+    - Contribution Guide: contribution-guide.md
+
+theme: readthedocs
+
+repo_url: https://github.com/Descent098/kuws
+
+site_description: Kieran's useful web scripts
+
+site_author: Kieran Wood | Descent098
