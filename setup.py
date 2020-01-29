@@ -17,36 +17,27 @@ Primary entrypoint is in kuws.command_line_utility.
 """
 import setuptools
 
-def concat_description(*filenames):
-    """Reads and yields the content of the filenames.
-
-    Arguments
-    ---------
-    *filenames
-        An arbitrary number of filenames to parse
-
-    Yields
-    ------
-    str:
-        The current files content (from file.read() function)
-
+def get_content(*filename):
+    """ Gets the content of a file and returns it as a string
+    Args:
+        filename(str): Name of file to pull content from
+    Returns:
+        str: Content from file
     """
-    for current_file in filenames:
-        with open(current_file, 'r') as f:
-            yield f.read()
+    content = ""
+    for file in filename:
+        with open(file, "r") as full_description:
+            content += full_description.read()
+    return content
 
-# Appending the changelog to the readme for a complete package description
-long_description = ""
-for content in concat_description("README.md", "CHANGELOG.md"):
-    long_description += content
 
 setuptools.setup(
     name="kuws",
-    version="0.0.5",
+    version="0.0.6",
     author="Kieran Wood",
-    author_email="kieranw098@gmail.com",
+    author_email="kieran@canadiancoding.ca",
     description="A set of python scripts for common web tasks",
-    long_description=long_description,
+    long_description = get_content("README.md", "CHANGELOG.md"),
     long_description_content_type="text/markdown",
     url="https://github.com/Descent098/kuws",
     packages=setuptools.find_packages(),
@@ -55,10 +46,15 @@ setuptools.setup(
       },
     install_requires=[
     "requests",
-    "pytube",
-    "pyopenssl",
+    "pytube3",
     "docopt",
       ],
+    extras_require = {
+        "dev" : ["nox",    # Used to run automated processes
+                 "pytest", # Used to run the test code in the tests directory
+                 "mkdocs"],# Used to create HTML versions of the markdown docs in the docs directory
+
+    },
     classifiers=[
         "Programming Language :: Python :: 3",
         "License :: OSI Approved :: MIT License",

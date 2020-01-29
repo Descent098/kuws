@@ -1,5 +1,14 @@
 # Changelog
 
+## January 28th 2020
+Merged V0.0.6 to master
+    - Added user documentation
+    - Fixed broken commands (all of them)
+    - Updated inline documentation
+    - Added tests (infastructure not actual tests... yet)
+    - Added nox to automate build and distribution processes
+
+
 ## October 20th 2019
 
 Merged V0.0.5 to master
