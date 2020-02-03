@@ -33,7 +33,7 @@ def get_content(*filename):
 
 setuptools.setup(
     name="kuws",
-    version="0.0.6",
+    version="0.0.7",
     author="Kieran Wood",
     author_email="kieran@canadiancoding.ca",
     description="A set of python scripts for common web tasks",

@@ -139,3 +139,15 @@ There are 4 main sessions built into the noxfile and they can be run using ```no
 
 
 **.gitignore**: A preconfigured gitignore file (info on .gitignore files can be found here: https://www.atlassian.com/git/tutorials/saving-changes/gitignore)
+
+
+## FAQ
+
+### I Get a module import error
+
+Here are the fixes for these issues:
+
+#### ModuleNotFoundError: No module named '_cffi_backend'
+
+This is because of an error with building python from source, this can be solved by running: ```python3 -m pip install cffi```
+
