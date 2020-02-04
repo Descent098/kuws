@@ -1,5 +1,3 @@
-
-
 # As of version 0.0.7 This project has been moved and renamed SWS
 
 
@@ -10,9 +8,7 @@ Details on the continued project can be found here:
 
 ---
 
-
-
-![kuws logo](https://raw.githubusercontent.com/Descent098/kuws/master/kuws-logo.png)
+![kuws logo](https://raw.githubusercontent.com/Descent098/kuws/master/docs/img/kuws-logo.png)
 
 
 
