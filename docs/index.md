@@ -1,3 +1,17 @@
+# As of version 0.0.7 This project has been moved and renamed SWS
+
+
+
+Details on the continued project can be found here: 
+
+[https://github.com/Descent098/sws](https://github.com/Descent098/sws)
+
+
+
+---
+
+
+
 # Welcome to the KUWS documentation!
 
 
